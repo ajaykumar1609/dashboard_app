@@ -5,6 +5,8 @@
   "dependencies": {
     "@syncfusion/ej2": "^20.4.42",
     "@syncfusion/ej2-react-base": "^20.4.42",
+    "@syncfusion/ej2-react-dropdowns": "^20.4.42",
+    "@syncfusion/ej2-react-grids": "^20.4.42",
     "@syncfusion/ej2-react-popups": "^20.4.42",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -41,9 +43,9 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^19.0.4",
     "autoprefixer": "^10.4.2",
     "eslint": "^8.9.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",

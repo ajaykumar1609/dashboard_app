@@ -8,7 +8,12 @@ import { links } from "../data/dummy";
 import { itemsToOrder } from "@syncfusion/ej2/treemap";
 import { useStateContext } from "../contexts/ContextProvider";
 const Sidebar = () => {
-  const { activeMenu ,setActiveMenu} = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize, currentColor } = useStateContext();
+  const handleCloseSideBar = () => {
+    if (activeMenu !== undefined && screenSize <= 900) {
+      setActiveMenu(false);
+    }
+  };
   const activeLink =
     "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2";
   const normalLink =
@@ -18,14 +23,18 @@ const Sidebar = () => {
       {activeMenu && (
         <>
           <div className="flex justify-between items-center">
-            <Link to= '/' onClick={() => setActiveMenu(false)} className="items-center flex mt-3 gap-3 text-xl dark:text-white text-slate-900 font-extrabold tracking-tighter">
+            <Link
+              to="/"
+              onClick={handleCloseSideBar}
+              className="items-center flex mt-3 gap-3 text-xl dark:text-white text-slate-900 font-extrabold tracking-tighter"
+            >
               <SiShopware />
               <span>Shoppy</span>
             </Link>
             <TooltipComponent content="menu" position="BottomCenter">
               <button
                 type="button"
-                onClick={() => setActiveMenu((pav)=>!pav)}
+                onClick={() => setActiveMenu((pav) => !pav)}
                 className="text-xl p-3 rounded-full hover:bg-light-gray mt-3 block md:hidden"
               >
                 <MdOutlineCancel />
@@ -40,7 +49,10 @@ const Sidebar = () => {
                   <NavLink
                     to={`/${Link.name}`}
                     key={Link.name}
-                    onClick={() => {}}
+                    onClick={handleCloseSideBar}
+                    style={({isActive})=>({
+                      backgroundColor: isActive ? currentColor: ''
+                    }) }
                     className={({ isActive }) =>
                       isActive ? activeLink : normalLink
                     }
